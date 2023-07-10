@@ -4,12 +4,13 @@ import {
   View,
 } from 'react-native'
 
-import { CurrentWeather } from './src/Components'
+import { CurrentWeather, UpcomingWeather } from './src/components'
 
 const App = () => {
   return (
     <View style={styles.container}>
-        <CurrentWeather />
+        {/* <CurrentWeather /> */}
+        <UpcomingWeather />
     </View>
   )
 }

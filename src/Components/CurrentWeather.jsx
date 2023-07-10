@@ -25,7 +25,6 @@ const CurrentWeather = () => {
         <Text style={styles.description}>It's Sunny</Text>
         <Text style={styles.message}>Its perfect t-shirt weather</Text>
       </View>
-      {/* <CurrentWeather /> */}
     </SafeAreaView>
   )
 }
