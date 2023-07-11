@@ -6,10 +6,14 @@ import {
   Platform,
   StatusBar,
   FlatList,
-  View
+  View,
+  Image,
+  ImageBackground
 } from 'react-native'
 
 import { Feather } from '@expo/vector-icons'
+
+const image = require('../../assets/upcoming-background.jpg')
 
 const data = [
   {
@@ -147,60 +151,56 @@ const Item = (props) => {
 }
 
 const UpcomingWeather = () => {
+  const renderItem = ({ item }) => (
+    <Item
+      dt_txt={item.dt_txt}
+      min={item.main.temp_min}
+      max={item.main.temp_max}
+      condition={item.weather[0].main}
+    />
+  )
+
   return (
     <SafeAreaView style={styles.container}>
-      <Text>UpcomingWeather</Text>
-      <FlatList
-        data={data}
-        renderItem={({ item }) => (
-          <Item
-            dt_txt={item.dt_txt}
-            min={item.main.temp_min}
-            max={item.main.temp_max}
-            condition={item.weather[0].main}
-          />
-        )}
-        keyExtractor={(item) => item.dt}
-      />
+      <ImageBackground style={styles.image} source={image}>
+        <Text>UpcomingWeather</Text>
+        <FlatList
+          data={data}
+          renderItem={renderItem}
+          keyExtractor={(item) => item.dt}
+        />
+      </ImageBackground>
     </SafeAreaView>
   )
 }
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: StatusBar.currentHeight || 0,
     flex: 1,
-    backgroundColor: 'white'
+    marginTop: StatusBar.currentHeight || 0,
+    backgroundColor: 'royalblue'
   },
   item: {
-    backgroundColor: 'pink',
     padding: 20,
+    backgroundColor: 'pink',
     marginVertical: 8,
     marginHorizontal: 16,
     borderRadius: 10,
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
-    borderWidth: 5,
+    borderWidth: 5
   },
-  date:{
+  date: {
     color: 'white',
-    fontSize: 15,
+    fontSize: 15
   },
-    temp: {
+  temp: {
     fontSize: 20,
-    color: 'white',
-    },
-  condition: {
-    // fontSize: 20,
-    // fontWeight: 'bold',
-    // color: 'white',
-    // borderColor: 'white',
-    // borderWidth: 1
+    color: 'white'
   },
-  border: {
-    borderColor: 'white',
-    borderWidth: 1
+  image: {
+    flex: 1
   }
 })
 
