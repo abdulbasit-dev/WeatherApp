@@ -1,7 +1,7 @@
-import CurrentWeather from './CurrentWeather'
-import UpcomingWeather from './UpcomingWeather'
+import ListItem from './ListItem';
+import IconText from './IconText';
 
 export {
-    CurrentWeather,
-    UpcomingWeather,
+    ListItem,
+    IconText,
 }

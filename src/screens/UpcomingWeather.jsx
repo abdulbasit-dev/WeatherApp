@@ -3,17 +3,13 @@ import {
   StyleSheet,
   Text,
   SafeAreaView,
-  Platform,
   StatusBar,
   FlatList,
-  View,
-  Image,
   ImageBackground
 } from 'react-native'
 
-import { Feather } from '@expo/vector-icons'
-
-const image = require('../../assets/upcoming-background.jpg')
+import { ListItem } from '../components'
+const img = require('../../assets/upcoming-background.jpg')
 
 const data = [
   {
@@ -135,24 +131,9 @@ const data = [
   }
 ]
 
-const Item = (props) => {
-  const [data, setData] = useState([])
-
-  const { dt_txt, min, max, condition } = props
-  return (
-    <View style={styles.item}>
-      <Feather name={'sun'} size={50} color="red" />
-      {/* <Text style={styles.condition}>Condition:- {condition}</Text> */}
-      <Text style={styles.date}>{dt_txt}</Text>
-      <Text style={styles.temp}>{min}</Text>
-      <Text style={styles.temp}>{max}</Text>
-    </View>
-  )
-}
-
 const UpcomingWeather = () => {
   const renderItem = ({ item }) => (
-    <Item
+    <ListItem
       dt_txt={item.dt_txt}
       min={item.main.temp_min}
       max={item.main.temp_max}
@@ -160,9 +141,12 @@ const UpcomingWeather = () => {
     />
   )
 
+  //   destructure the styles object
+  const { image, container } = styles
+
   return (
-    <SafeAreaView style={styles.container}>
-      <ImageBackground style={styles.image} source={image}>
+    <SafeAreaView style={container}>
+      <ImageBackground style={image} source={img}>
         <Text>UpcomingWeather</Text>
         <FlatList
           data={data}
@@ -179,25 +163,6 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: StatusBar.currentHeight || 0,
     backgroundColor: 'royalblue'
-  },
-  item: {
-    padding: 20,
-    backgroundColor: 'pink',
-    marginVertical: 8,
-    marginHorizontal: 16,
-    borderRadius: 10,
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    borderWidth: 5
-  },
-  date: {
-    color: 'white',
-    fontSize: 15
-  },
-  temp: {
-    fontSize: 20,
-    color: 'white'
   },
   image: {
     flex: 1
