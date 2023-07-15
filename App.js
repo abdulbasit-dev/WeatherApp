@@ -8,14 +8,24 @@ const Tab = createBottomTabNavigator()
 const App = () => {
   return (
     <NavigationContainer>
-      <Tab.Navigator>
+      <Tab.Navigator
+        screenOptions={{
+          tabBarActiveTintColor: 'tomato',
+          tabBarInactiveTintColor: 'gray'
+        }}
+      >
         <Tab.Screen
           name="Current"
+          pos
           component={CurrentWeather}
           options={{
             tabBarLabel: 'Current Weather',
-            tabBarIcon: ({ color, size }) => (
-              <Feather name={'sun'} size={20} color="black" />
+            tabBarIcon: ({ focused }) => (
+              <Feather
+                name={'droplet'}
+                size={25}
+                color={focused ? 'tomato' : 'black'}
+              />
             )
           }}
         />
@@ -24,8 +34,12 @@ const App = () => {
           component={UpcomingWeather}
           options={{
             tabBarLabel: 'Upcoming Weather',
-            tabBarIcon: ({ color, size }) => (
-              <Feather name={'cloud'} size={20} color="black" />
+            tabBarIcon: ({ focused }) => (
+              <Feather
+                name={'clock'}
+                size={25}
+                color={focused ? 'tomato' : 'black'}
+              />
             )
           }}
         />
@@ -34,8 +48,12 @@ const App = () => {
           component={City}
           options={{
             tabBarLabel: 'City',
-            tabBarIcon: ({ color, size }) => (
-              <Feather name={'map-pin'} size={20} color="black" />
+            tabBarIcon: ({ focused }) => (
+              <Feather
+                name={'home'}
+                size={25}
+                color={focused ? 'tomato' : 'black'}
+              />
             )
           }}
         />
