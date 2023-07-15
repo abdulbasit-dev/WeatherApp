@@ -41,15 +41,15 @@ const City = () => {
         </View>
         <View style={[rowLayout, riseSetWrapper]}>
           <IconText
-            iconName="sunrise"
-            iconColor="red"
-            bodyText="10:46:58am"
+            iconName={"sunrise"}
+            iconColor={"red"}
+            bodyText={"10:46:58am"}
             bodyTextStyles={riseSetText}
           />
           <IconText
-            iconName="sunset"
-            iconColor="red"
-            bodyText="17:28:15pm"
+            iconName={"sunset"}
+            iconColor={"red"}
+            bodyText={"17:28:15pm"}
             bodyTextStyles={riseSetText}
           />
         </View>

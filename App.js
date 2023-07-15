@@ -9,9 +9,9 @@ import { CurrentWeather, UpcomingWeather, City } from './src/screens'
 const App = () => {
   return (
     <View style={styles.container}>
-        {/* <CurrentWeather /> */}
+        <CurrentWeather />
         {/* <UpcomingWeather /> */}
-        <City />
+        {/* <City /> */}
     </View>
   )
 }
