@@ -10,19 +10,19 @@ export default useGetWeather = () => {
   const [lon, setLon] = useState(null)
 
   const fetchWeatherData = async () => {
-
     try {
-      const res = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}&units=metric`)
+      const res = await fetch(
+        `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}&units=metric`
+      )
       const data = await res.json()
       setWeather(data)
     } catch (err) {
       setError('could not fetch weather')
-      console.log(err);
+      console.log(err)
     } finally {
       setLoading(false)
     }
   }
-
   useEffect(() => {
     ;(async () => {
       let { status } = await Location.requestForegroundPermissionsAsync()
