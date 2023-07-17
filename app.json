@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "WeatherApp",
-    "slug": "WeatherApp",
+    "slug": "weatherapp",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -21,10 +21,17 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.basit_dev.weatherapp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "104b7327-2975-4794-83e2-95910aad2623"
+      }
+    },
+    "owner": "basit_dev"
   }
 }
