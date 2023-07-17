@@ -15,10 +15,10 @@ const UpcomingWeather = ({ weatherData }) => {
 
   const renderItem = ({ item }) => (
     <ListItem
-      dt_txt={item.dt_txt}
-      min={item.main.temp_min}
-      max={item.main.temp_max}
-      condition={item.weather[0].main}
+      dt_txt={item?.dt_txt}
+      min={item?.main.temp_min}
+      max={item?.main.temp_max}
+      condition={item?.weather[0].main}
     />
   )
 
@@ -31,7 +31,7 @@ const UpcomingWeather = ({ weatherData }) => {
         <FlatList
           data={weatherData}
           renderItem={renderItem}
-          keyExtractor={(item) => item.dt}
+          keyExtractor={(item) => item?.dt}
         />
       </ImageBackground>
     </SafeAreaView>

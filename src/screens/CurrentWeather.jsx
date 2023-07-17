@@ -29,17 +29,18 @@ const CurrentWeather = ({ weatherData }) => {
     main: { temp, feels_like, temp_max, temp_min },
     weather
   } = weatherData
-  
-  const weatherCondition = weather[0].main
+
+  //   set optional chaining to avoid error when weather is undefined
+  const weatherCondition = weather[0]?.main
   const weatherTypeInfo = weatherType[weatherCondition]
 
   return (
     <SafeAreaView
-      style={[wrapper, { backgroundColor: weatherTypeInfo.backgroundColor }]}
+      style={[wrapper, { backgroundColor: weatherTypeInfo?.backgroundColor }]}
     >
       <View style={container}>
-        <Feather name={weatherTypeInfo.icon} size={100} color="black" />
-        <Text style={tempStyles}>{temp}</Text>
+        <Feather name={weatherTypeInfo?.icon} size={100} color="black" />
+        <Text style={tempStyles}>{temp}°</Text>
         <Text style={feels}>Feels {feels_like}°</Text>
         <RowText
           messageOne={`High: ${temp_max} ° `}
@@ -50,8 +51,8 @@ const CurrentWeather = ({ weatherData }) => {
         />
       </View>
       <RowText
-        messageOne={weather[0].description}
-        messageTwo={weatherTypeInfo.message}
+        messageOne={weather[0]?.description}
+        messageTwo={weatherTypeInfo?.message}
         containerStyles={bodyWrapper}
         messageOneStyles={description}
         messageTwoStyles={message}
@@ -63,8 +64,7 @@ const CurrentWeather = ({ weatherData }) => {
 const styles = StyleSheet.create({
   wrapper: {
     paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0, // Adjust for Android status bar
-    flex: 1,
-    backgroundColor: 'pink'
+    flex: 1
   },
   container: {
     flex: 1,
@@ -93,10 +93,10 @@ const styles = StyleSheet.create({
     paddingBottom: 40
   },
   description: {
-    fontSize: 48
+    fontSize: 43
   },
   message: {
-    fontSize: 30
+    fontSize: 25
   }
 })
 

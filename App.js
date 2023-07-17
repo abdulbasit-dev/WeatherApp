@@ -18,7 +18,7 @@ const App = () => {
 
   return (
     <View style={styles.container}>
-      {loading ? <ActivityIndicator size="large" color="red" /> : <ErrorItem />}
+      {error ? <ErrorItem /> : <ActivityIndicator size="large" color="red" />}
     </View>
   )
 }
