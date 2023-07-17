@@ -5,6 +5,7 @@
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
+    "build": "expo build:android",
     "ios": "expo start --ios",
     "web": "expo start --web",
     "lint": "eslint ."
@@ -12,7 +13,6 @@
   "dependencies": {
     "@react-navigation/bottom-tabs": "^6.5.8",
     "@react-navigation/native": "^6.1.7",
-    "axios": "^1.4.0",
     "eslint": "^8.44.0",
     "expo": "~48.0.18",
     "expo-location": "~15.1.1",

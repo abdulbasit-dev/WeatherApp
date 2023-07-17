@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import axios from 'axios'
 import * as Location from 'expo-location'
 import { WEATHER_API_KEY } from '@env'
 
@@ -9,8 +8,22 @@ export default useGetWeather = () => {
   const [loading, setLoading] = useState(true)
   const [lat, setLat] = useState(null)
   const [lon, setLon] = useState(null)
+
+  const fetchWeatherData = async () => {
+
+    try {
+      const res = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}&units=metric`)
+      const data = await res.json()
+      setWeather(data)
+    } catch (err) {
+      setError('could not fetch weather')
+      console.log(err);
+    } finally {
+      setLoading(false)
+    }
+  }
+
   useEffect(() => {
-    setLoading(true)
     ;(async () => {
       let { status } = await Location.requestForegroundPermissionsAsync()
       if (status !== 'granted') {
@@ -22,21 +35,7 @@ export default useGetWeather = () => {
       let location = await Location.getCurrentPositionAsync({})
       setLat(location.coords.latitude)
       setLon(location.coords.longitude)
-
-        let URL = `https://api.openweathermap.org/data/2.5/forecast?units=metric&lat=${lat}&lon=${lon}&appid=243f6bc2d505597f934ab19467c12857`
-    //   let URL = `http://api.openweathermap.org/data/2.5/forecast?lat=metric&${lat}&lon=${lon}&appid=${WEATHER_API_KEY}}`
-
-      // fetch weather data
-      try {
-        const res = await axios.get(URL)
-        setWeather(res.data)
-        setError(null)
-      } catch (error) {
-        setError('Could not fetch weather data')
-        console.log(error)
-      } finally {
-        setLoading(false)
-      }
+      await fetchWeatherData()
     })()
   }, [])
 
