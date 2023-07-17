@@ -6,9 +6,7 @@ import Tabs from './src/components/Tabs'
 
 const App = () => {
   const [loading, error, weather] = useGetWeather()
-
-  //   console.log(loading, error, weather)
-
+  
   if (weather && weather.list) {
     return (
       <NavigationContainer>

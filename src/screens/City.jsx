@@ -7,10 +7,13 @@ import {
   ImageBackground,
   View
 } from 'react-native'
+import moment from 'moment'
+
 const img = require('../../assets/city-background.jpg')
 import { IconText } from '../components'
 
-const City = () => {
+const City = ({ city }) => {
+  const { name, country, population, sunrise, sunset } = city
 
   // destructuring styles
   const {
@@ -29,27 +32,27 @@ const City = () => {
   return (
     <SafeAreaView style={container}>
       <ImageBackground source={img} style={image}>
-        <Text style={[cityText, cityName]}>London</Text>
-        <Text style={[cityText, countryName]}>UK</Text>
+        <Text style={[cityText, cityName]}>{name}</Text>
+        <Text style={[cityText, countryName]}>{country}</Text>
         <View style={[rowLayout, populationWrapper]}>
           <IconText
             iconName="user"
             iconColor="red"
-            bodyText="8000"
+            bodyText={population.toString()}
             bodyTextStyles={populationText}
           />
         </View>
         <View style={[rowLayout, riseSetWrapper]}>
           <IconText
-            iconName={"sunrise"}
-            iconColor={"red"}
-            bodyText={"10:46:58am"}
+            iconName={'sunrise'}
+            iconColor={'red'}
+            bodyText={moment.unix(sunrise).format('HH:mm:ss')}
             bodyTextStyles={riseSetText}
           />
           <IconText
-            iconName={"sunset"}
-            iconColor={"red"}
-            bodyText={"17:28:15pm"}
+            iconName={'sunset'}
+            iconColor={'red'}
+            bodyText={moment.unix(sunset).format('HH:mm:ss')}
             bodyTextStyles={riseSetText}
           />
         </View>
@@ -61,7 +64,7 @@ const City = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: StatusBar.currentHeight || 0,
+    // marginTop: StatusBar.currentHeight || 0,
     color: 'white'
   },
   image: {
@@ -72,7 +75,8 @@ const styles = StyleSheet.create({
     fontSize: 40
   },
   countryName: {
-    fontSize: 30
+    fontSize: 30,
+    color: 'black',
   },
   cityText: {
     justifyContent: 'center',

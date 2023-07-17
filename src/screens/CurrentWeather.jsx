@@ -12,8 +12,6 @@ import { RowText } from '../components'
 import { weatherType } from '../utilities/weatherType'
 
 const CurrentWeather = ({ weatherData }) => {
-  console.log(weatherData)
-
   // destructuring styles
   const {
     wrapper,
@@ -34,7 +32,6 @@ const CurrentWeather = ({ weatherData }) => {
   
   const weatherCondition = weather[0].main
   const weatherTypeInfo = weatherType[weatherCondition]
-  console.log(weatherCondition)
 
   return (
     <SafeAreaView
