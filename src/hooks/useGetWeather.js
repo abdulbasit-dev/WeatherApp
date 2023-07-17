@@ -1,13 +1,13 @@
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import * as Location from 'expo-location'
 import { WEATHER_API_KEY } from '@env'
 
 export default useGetWeather = () => {
-  const [weather, setWeather] = useState([])
-  const [error, setError] = useState(null)
   const [loading, setLoading] = useState(true)
-  const [lat, setLat] = useState(null)
-  const [lon, setLon] = useState(null)
+  const [error, setError] = useState(null)
+  const [weather, setWeather] = useState([])
+  const [lat, setLat] = useState([])
+  const [lon, setLon] = useState([])
 
   const fetchWeatherData = async () => {
     try {
@@ -18,26 +18,24 @@ export default useGetWeather = () => {
       setWeather(data)
     } catch (err) {
       setError('could not fetch weather')
-      console.log(err)
     } finally {
       setLoading(false)
     }
   }
+
   useEffect(() => {
     ;(async () => {
       let { status } = await Location.requestForegroundPermissionsAsync()
+
       if (status !== 'granted') {
-        setError('Permission to access location was denied')
-        console.log(error)
+        setError('permission to access location was denied')
         return
       }
-
       let location = await Location.getCurrentPositionAsync({})
       setLat(location.coords.latitude)
       setLon(location.coords.longitude)
       await fetchWeatherData()
     })()
-  }, [])
-
+  }, [lat, lon])
   return [loading, error, weather]
 }
