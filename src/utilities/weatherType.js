@@ -40,4 +40,3 @@ export const weatherType = {
     backgroundColor: '#3e3e37'
   }
 }
- um-go6
