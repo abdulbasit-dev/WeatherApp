@@ -7,7 +7,6 @@ import { ErrorItem } from './src/components'
 
 const App = () => {
   const [loading, error, weather] = useGetWeather()
-  console.log(weather);
 
   if (weather && weather.list) {
     return (
