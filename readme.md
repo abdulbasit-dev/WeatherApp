@@ -1,8 +1,10 @@
 
 <p align="center">
   <img src="https://d33wubrfki0l68.cloudfront.net/554c3b0e09cf167f0281fda839a5433f2040b349/ecfc9/img/header_logo.svg" alt="React Native Logo" width="100" />
-  <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple126/v4/ef/56/5c/ef565c81-0b63-5e9a-b2ac-a7bcd39e2806/AppIcon-1x_U007emarketing-0-7-0-85-220.png/230x0w.webp" alt="Expo Logo" width="90" style="border-radius:15px; margin-left:4rem" />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple126/v4/ef/56/5c/ef565c81-0b63-5e9a-b2ac-a7bcd39e2806/AppIcon-1x_U007emarketing-0-7-0-85-220.png/230x0w.webp" alt="Expo Logo" width="90"/>
 </p>
+
 
 # Weather App
 
